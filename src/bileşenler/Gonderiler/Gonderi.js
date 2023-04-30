@@ -1,31 +1,31 @@
 import React from 'react';
 import Yorumlar from '../Yorumlar/Yorumlar';
-import BeğenBölümü from './BeğenBölümü';
-import GönderiBaşlığı from './GönderiBaşlığı';
+import BegenBolumu from './BegenBolumu';
+import GonderiBasligi from './GonderiBasligi';
 
-const Gönderi = props => {
+const Gonderi = props => {
   // 🔥 Bu bileşenin parentının aşağıdaki propları düzgün gönderdiğinden emin olun.
-  const { gönderi, gonderiyiBegen } = props;
+  const { herbirGonderi, begenelimFonk } = props;
 
   return (
     <div className='post-border'>
-      <GönderiBaşlığı
-        username={gönderi.username}
-        thumbnailUrl={gönderi.thumbnailUrl}
+      <GonderiBasligi
+        username={herbirGonderi.username}
+        thumbnailUrl={herbirGonderi.thumbnailUrl}
       />
       <div className='post-image-wrapper'>
         <img
           alt='post thumbnail'
           className='post-image'
-          src={gönderi.imageUrl}
+          src={herbirGonderi.imageUrl}
         />
       </div>
       {/* BeğenBölümü düzgün çalışması için ihtiyaç duyduğu tüm proplara sahip mi? */}
-      <BeğenBölümü gonderiyiBegen={() => gonderiyiBegen(gönderi.id)}/>
+      <BegenBolumu gonderiyiBegen={() => begenelimFonk(herbirGonderi.id)} begeniSayisi={herbirGonderi.likes}/>
       {/* Yorumlar da proplara dikkat istiyor! */}
-      <Yorumlar />
+      <Yorumlar yorumlar={herbirGonderi.comments}/>
     </div>
   );
 };
 
-export default Gönderi;
+export default Gonderi;
